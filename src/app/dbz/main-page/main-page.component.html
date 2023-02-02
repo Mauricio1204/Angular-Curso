@@ -4,23 +4,31 @@
   <div class="col">
     <h3>Personajes</h3>
     <hr>
-    <ul>
-      <li> Krillin - 700 </li>
-      <li> Gok u  -15,000</li>
-      <li>Vegueta - 8,500</li>
+    <ul >
+      <li  *ngFor="let personaje of personajes; let i = index" >
+        {{i + 1}} - {{personaje.nombre}} {{personaje.poder | number }}
+      </li>
     </ul>
   </div>
   <div class="col">
-    <h3>Agregar</h3>
+    <h3>Agregar <small>{{nuevo.nombre}}</small></h3>
     <hr>
     <form (ngSubmit)="agregar()">
-      <input
+      <!-- <input
       type="text"
       name=""
       id=""
       placeholder="Nombre"
       [value]="nuevo.nombre"
       (input)="cambiarNombre($event)"
+      > //FORMA 1 DE OPTENER EL VALOR DE UN IMNPUT MANERA LARGA  -->
+      <input
+      type="text"
+      name=""
+      id=""
+      placeholder="Nombre"
+      name="nombre"
+      [(ngModel)]="nuevo.nombre"
       >
 
       <input
@@ -28,11 +36,12 @@
       name=""
       id=""
       placeholder="Poder"
-      [value]="nuevo.poder"
+      name="poder"
+      [(ngModel)]="nuevo.poder"
 
       ><!--paréntesis es para emitir o escuchar eventos.
         Las llaves cuadradas es para establecer alguna propiedad a este objeto. -->
-      <button type ="submit">Agregar</button>
+      <button (click)="agregar()" type ="submit">Agregar</button>
 
     </form>
   </div>
