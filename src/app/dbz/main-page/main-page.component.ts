@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Personaje } from '../interfases/dbz.interface';
+import { DbzServise } from '../servises/dbz.service';
 
-interface Personaje {
-  nombre:string;
-  poder:number;
-}
+
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -11,43 +11,31 @@ interface Personaje {
 })
 export class MainPageComponent  {
 
-
-  personajes: Personaje[]=[
-    {
-      nombre:'Goku',
-      poder:15000
-    },
-    {
-      nombre:'Vegeta',
-      poder:75000
-    },
-    {
-      nombre:'Kirlin',
-      poder:1000
-    },
-  ];
+//parte del servico
+  // personajes: Personaje [] = []; "esta parte pertenese al la forma de llamar al servisio por medio del constructor"
 
 
+  // get personajes(): Personaje[] {
+  //   return this.dbzServise.personajes;
+  // }//podemos optener la informacion atraves de esta forma
+
+
+  // agregarNuevoPersonaje( argumento :Personaje ) {
+  //   this.personajes.push(argumento);
+  // } esta parte no es nesesaria a la hora de ejecutar el servisio
+  //constructor (private dbzServise: DbzServise){
+    //this.personajes = this.dbzServise.personajes; esta linea es una forma de llamar a un servisio en la clase
+  //}
+  //fin del servico
 
   nuevo: Personaje={
-    nombre:'',
-    poder:0
+    nombre:'Maestro Roshi',
+    poder: 15000
   }
+  constructor(){
+    console.log('Servisio inicioalizado');
 
-  agregar(){
-    if(this.nuevo.nombre.trim().length===0){
-    return;
-    }
-    console.log(this.nuevo);
-    this.personajes.push(this.nuevo)
-    this.nuevo={
-      nombre:'',
-      poder: 0
-    }
   }
-
-
-
 
 
 
