@@ -21,9 +21,9 @@ export class DbzServise {
   get personajes():Personaje[]{
     return [...this._personajes];
   }
-  constructor()
-  {
-    console.log("servisio inicializado")
+  constructor() {}
+  //creando nuestro primer metodo
+  agregarPersonaje(personaje: Personaje){
+    this._personajes.push(personaje);
   }
 }
-
